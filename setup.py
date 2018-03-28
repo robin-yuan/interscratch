@@ -12,7 +12,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='interscratch',
-    version='0.1.0',
+    version='0.2.0',
     description='http extension to send messages between scratch projects',
     long_description=long_description,
     url='https://github.com/pypa/sampleproject',
@@ -43,10 +43,10 @@ setup(
     extras_require={
     },
     package_data={
-        'extension': ['resources/interscratch.s2e'],
-        'examples': ['resources/test.sb2'],
+        'interscratch': ['resources/*'],
     },
     data_files=[],
+    include_package_data = True,
     entry_points={
         'console_scripts': [
             'interscratchc=interscratch.interscratchc:main',
