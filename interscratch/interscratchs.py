@@ -22,14 +22,15 @@ def get_ip():
 
 class Application(tornado.web.Application):
     def __init__(self):
-        handlers = [(r"/", MainHandler)]
+        client_list = set()
+        handlers = [(r"/", MainHandler, dict(client_list=client_list))]
         settings = dict(debug=True)
         tornado.web.Application.__init__(self, handlers, **settings)
 
 
 class MainHandler(tornado.websocket.WebSocketHandler):
-    def initialize(self):
-        self.clients = set()
+    def initialize(self, client_list):
+        self.clients = client_list
 
     def check_origin(self, origin):
         return True
